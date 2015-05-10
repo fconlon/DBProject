@@ -12,20 +12,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
-} 
+}
 
-printTable($conn, "Table Before", "course");
+printTable($conn, "Table Beforee", "instr_req");
 
-if(count($_POST) == 4)
-    $sql = "INSERT INTO course (course_code, title, req, catalog) VALUES (\"$_POST[course_code]\", \"$_POST[title]\", \"Y\", $_POST[catalog]);";
-else
-    $sql = "INSERT INTO course (course_code, title, req, catalog) VALUES (\"$_POST[course_code]\", \"$_POST[title]\", \"N\", $_POST[catalog]);";
+$sql = "INSERT INTO instr_req(course_code, id, title, justification, year) VALUES(\"$_POST[course_code]\", \"$_POST[id]\", \"$_POST[title]\", \"$_POST[justification]\", $_POST[year]);";
 
 if ($conn->query($sql) === TRUE) {
-    printTable($conn, "Table After", "course");
-} 
-else {
+    printTable($conn, "Table After", "instr_req");
+} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
 $conn->close();
+
 ?>

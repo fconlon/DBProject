@@ -1,43 +1,5 @@
 <?php
-function printTable($conn, $header, $table){
-    //get the attribute list 
-    $sql = "DESCRIBE $table;";
-    $result = $conn->query($sql);
-    
-    //output the title of the table and the attributes as a header row
-    echo "<h1>$header</h1><table id=\"tbl\"><tr>";
-    
-    foreach($result as $att){
-        echo "<th>$att[Field]</th>";
-    }
-    echo "</tr>";
-    
-    //get the table from the database
-    $sql = "SELECT * FROM $table;";
-    $result = $conn->query($sql);
-    
-    //output the table
-    foreach($result as $row ){
-        echo "<tr>";
-        foreach($row as $field){
-            echo "<td>$field</td>";
-        }
-        echo "</tr>";
-    }
-    
-    echo "</table>";
-}
-//styling for tables
-echo "<style>
-    table{
-        border-collapse: collapse;
-    }
-
-    #tbl th, td {
-        border: 1px solid black;
-        padding: 5px;
-    }
-    </style>";
+include 'printTables.php';
 
 // information about the database you will connect to
 $servername = "localhost";
@@ -52,8 +14,9 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+$_POST["room"] = trim($_POST["room"]);
 //query to insert into the assignment table 
-$sql = "INSERT INTO assignment(crn, room, course) VALUES(\"$_POST[crn]\", \"$_POST[building] $_POST[room]\", \"$_POST[course_code]\")";
+$sql = "INSERT INTO assignment(crn, room, course) VALUES(\"$_POST[crn]\", \"$_POST[room]\", \"$_POST[course_code]\")";
 
 //display table before and after
 printTable($conn, "Assignment Table Before", "assignment");
@@ -76,8 +39,12 @@ else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+$sql = "SELECT capacity FROM room_capacity WHERE room=\"$_POST[room]\";";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
 //query to insert into enrollment table 
-$sql = "INSERT INTO enrollment(current, max, crn) VALUES(\"$_POST[cur]\", \"$_POST[max]\",\"$_POST[crn]\");";
+$sql = "INSERT INTO enrollment(current, max, crn) VALUES(\"$_POST[cur]\", \"$row[capacity]\",\"$_POST[crn]\");";
 
 //display table before and after
 printTable($conn, "Enrollment Table Before", "enrollment");

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <!--
 	Prologue 1.2 by HTML5 UP
 	html5up.net | @n33co
@@ -55,10 +55,10 @@
 							-->
 							<ul>
 								<li><a href="index.html" <span class="fa fa-home">Home</span></a></li>
-								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Faculty</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Professor</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">Business Manager</span></a></li>
-								<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-envelope">Contact</span></a></li>
+								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Course Preference</span></a></li>
+								<li><a href="#LoadPreference" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Load Preference</span></a></li>
+								<li><a href="#requestCourse" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Course Request</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Contact</span></a></li>
 							</ul>
 						</nav>
 
@@ -121,20 +121,22 @@
 					</section>
 
 				<!-- Update Load Preference-->
-					<section id="LoadPrefence" class="two">
+					<section id="LoadPreference" class="two">
 						<div class="container">
 
 							<header>
 								<h2>Update Load Preference</h2>
 							</header>
-							<p> Please input the number of hours you would like to teach </p>
+							<p>When would you like your load to be heaviest?</p>
 							<footer>
 
-								<form method="post" action="#">
+								<form method="post" action="PHP/load_pref.php">
 									<div class="row half">
-										<div class="6u"><input type="number" class="text" name="course_load" placeholder="Course load" /></div>
-
-
+										<div class="6u"><input type="text" class="text" name="id" placeholder="Instructor ID" /></div>
+                                        <div class="6u">
+                                            <input type="radio" name="load" value="1" />Fall
+                                            <input type="radio" name="load" value="2" />Spring
+                                        </div>
 									</div>
 
 									<div class="row">
@@ -157,12 +159,13 @@
 
 						<footer>
 
-							<form method="post" action="#">
+							<form method="post" action="PHP/instr_req.php">
 								<div class="row half">
 									<div class="6u"><input type="text" class="text" name="course_code" placeholder="Course Code" /></div>
 									<div class="6u"><input type="text" class="text" name="title" placeholder="Course Title" /></div>
-									<div class="6u"><input type="number" class="text" name="sectionNumber" placeholder="Section Number" /></div>
-
+									<div class="6u"><input type="number" class="text" name="year" placeholder="Year" /></div>
+                                    <div class="6u"><input type="text" class="text" name="id" placeholder="Instructor ID" /></div>
+                                    <div class="12u"><textarea name="justification" placeholder="Why do you want this course?"></textarea></div>
 								</div>
 
 								<div class="row">
