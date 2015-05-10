@@ -58,7 +58,8 @@
 								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Course Preference</span></a></li>
 								<li><a href="#LoadPreference" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Load Preference</span></a></li>
 								<li><a href="#requestCourse" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Course Request</span></a></li>
-								<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Contact</span></a></li>
+								<li><a href="#textbooks" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Assign Text</span></a></li>
+                                <li><a href="#courses" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-th">View Assigned Courses</span></a></li>
 							</ul>
 						</nav>
 
@@ -99,13 +100,12 @@
 
 							<footer>
 
-								<form method="post" action="#">
+								<form method="post" action="PHP/instr_pref.php">
 									<div class="row half">
-										<div class="6u"><input type="text" class="text" name="firstname" placeholder="Course Taught" /></div>
-										<div class="6u"><input type="number" class="text" name="lastname" placeholder="Preference" /></div>
-
-
-
+										<div class="6u"><input type="text" class="text" name="course" placeholder="Prefered Course" /></div>
+                                        <div class="6u"><input type="number" class="text" name="year" placeholder="Year" /></div>
+										<div class="6u"><input type="number" class="text" name="pref" placeholder="Preference Level" /></div>
+                                        <div class="6u"><input type="text" class="text" name="id" placeholder="Instructor ID" /></div>
 									</div>
 
 									<div class="row">
@@ -188,9 +188,9 @@
 
 							<footer>
 
-								<form method="post" action="#">
+								<form method="post" action="PHP/text_assign.php">
 									<div class="row half">
-										<div class="6u"><input type="text" class="text" name="textbookTitle" placeholder="Title" /></div>
+										<div class="6u"><input type="text" class="text" name="title" placeholder="Title" /></div>
 										<div class="6u"><input type="text" class="text" name="author" placeholder="Author" /></div>
 										<div class="6u"><input type="number" class="text" name="edition" placeholder="Edition" /></div>
 										<div class="6u"><input type="text" class="text" name="isbn" placeholder="ISBN" /></div>
@@ -210,7 +210,31 @@
 						</div>
 					</section>
 
+                <!--View assignments-->
+                    <section id="courses" class="four">
+						<div class="container">
+							<header>
+								<h2>View assigned courses</h2>
+							</header>
 
+							<footer>
+
+								<form method="post" action="PHP/instr_view_courses.php">
+                                    <div class="row half">
+                                        <div class="6u"><input type="text" class="text" name="year" placeholder="Year" /></div>
+                                        <div class="6u"><input type="text" class="text" name="semester" placeholder="Semester" /></div>
+                                        <div class="6u"><input type="text" class="text" name="id" placeholder="Instructor ID" /></div>
+                                    </div>
+									<div class="row">
+										<div class="12u">
+											<a href="#" class="button submit">View</a>
+										</div>
+									</div>
+								</form>
+
+							</footer>
+						</div>
+					</section>
 
 <!-- main container-->
 </div>

@@ -11,6 +11,7 @@ echo "<style>
     </style>";
 function printTable($conn, $header, $table){
     //get the attribute list 
+    
     $sql = "DESCRIBE $table;";
     $result = $conn->query($sql);
     
@@ -35,6 +36,28 @@ function printTable($conn, $header, $table){
         echo "</tr>";
     }
     
+    echo "</table>";
+}
+
+function printQuery($conn, $header, $sql){
+    $result = $conn->query($sql);
+
+    echo "<h1>$header</h1><table id=\"tbl\"><tr>";
+    
+    $fields = $result->fetch_fields();
+
+    foreach($fields as $field){
+        echo "<th>$field->name</th>";
+    }
+    echo "</tr>";
+
+    foreach($result as $row){
+        echo "<tr>";
+        foreach($row as $att){
+            echo "<td>$att</td>";
+        }
+        echo "</tr>";
+    }
     echo "</table>";
 }
 ?>

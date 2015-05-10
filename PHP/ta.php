@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 //query to insert into the ta table 
-$sql = "INSERT INTO ta(name, id, hours) VALUES(\"$_POST[TAFirstName] $_POST[TALastName]\", \"$_POST[tid]\", \"$_POST[hours]\")";
+$sql = "INSERT IGNORE INTO ta(name, id) VALUES(\"$_POST[TAFirstName] $_POST[TALastName]\", \"$_POST[tid]\");";
 
 //display table before and after
 printTable($conn, "TA Table Before", "ta");
@@ -27,12 +27,12 @@ else {
 }
 
 //query to update the assignment table
-$sql = "UPDATE assignment SET tid=\"$_POST[tid]\" WHERE crn=\"$_POST[crn]\"";
+$sql = "INSERT INTO ta_assign(crn, tid, hours) VALUES($_POST[crn], \"$_POST[tid]\", \"$_POST[hours]\");";
 
 //display table before and after
-printTable($conn, "Assignment Table Before", "assignment");
+printTable($conn, "TA_assign Before", "ta_assign");
 if ($conn->query($sql) === TRUE) {
-    printTable($conn, "Assignment Table After", "assignment");
+    printTable($conn, "TA_assign After", "ta_assign");
 } 
 else {
     echo "Error: " . $sql . "<br>" . $conn->error;

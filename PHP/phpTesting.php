@@ -19,6 +19,28 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
+
+$sql = "SELECT * FROM instr_courses WHERE iid = \"R00534137\";";
+$result = $conn->query($sql);
+
+echo "<table id=\"tbl\"><tr>";
+$fields = $result->fetch_fields();
+
+foreach($fields as $field){
+    echo "<th>$field->name</th>";
+}
+echo "</tr>";
+
+foreach($result as $row){
+    echo "<tr>";
+    foreach($row as $att){
+        echo "<td>$att</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+/*
 $sql = "DESCRIBE assignment;";
 $result = $conn->query($sql);
 
