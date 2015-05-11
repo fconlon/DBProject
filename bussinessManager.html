@@ -57,7 +57,7 @@
 								<li><a href="index.html" <span class="fa fa-home">Home</span></a></li>
 								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Professor Courses</span></a></li>
 								<li><a href="#special_courses" id="portfolio-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Special Courses</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">Business Manager</span></a></li>
+								<li><a href="#offerings" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">Course Offerings</span></a></li>
 								<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-envelope">Contact</span></a></li>
 							</ul>
 						</nav>
@@ -122,7 +122,7 @@
 						<div class="container">
 
 							<header>
-								<h2>Update Load Preference</h2>
+								<h2>Special Courses</h2>
 							</header>
 							<p> Please input the number of hours you would like to teach </p>
 							<footer>
@@ -146,20 +146,18 @@
 						</div>
 					</section>
 <!-- Request Course -->
-					<section id="requestCourse" class="three">
+					<section id="offereings" class="three">
 						<div class ="container">
 						<header>
-							<h2>Request A Course</h2>
+							<h2>Course Offerings</h2>
 						</header>
 
 						<footer>
 
-							<form method="post" action="#">
+							<form method="post" action="PHP/view_course_offerings.php">
 								<div class="row half">
-									<div class="6u"><input type="text" class="text" name="course_code" placeholder="Course Code" /></div>
-									<div class="6u"><input type="text" class="text" name="title" placeholder="Course Title" /></div>
-									<div class="6u"><input type="number" class="text" name="sectionNumber" placeholder="Section Number" /></div>
-
+                                    <div class="6u"><input type="text" class="text" name="code" placeholder="Course Code" /></div>
+                                    <div class="6u"><input type="number" class="text" name="yearsBack" placeholder="How far back?" /></div>
 								</div>
 
 								<div class="row">
